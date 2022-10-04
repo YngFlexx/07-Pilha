@@ -5,9 +5,12 @@ using namespace std;
 struct NO {
 	int valor;
 	NO* prox;
+	int primeiro;
 };
 
 NO* topo = NULL;
+
+
 
 // headers
 void menu();
@@ -82,18 +85,36 @@ void push()
 	{
 		return;
 	}
+	
+	else {
 
-	cout << "Digite o elemento: ";
-	cin >> novo->valor;
-	novo->prox = NULL;
-
-
-}
+		cout << "Digite o elemento: ";
+		cin >> novo->valor;
+		novo->prox = NULL;
+	}
+		if (topo == NULL) {
+			topo = novo;
+		}
+		else {
+			NO* aux = novo;
+			aux->prox = topo;
+			topo = aux;
+		}
+	}
 
 void pop()
 {
+	if (topo == NULL) {
+		cout << "A lista está vazia" << endl;
+	}
 
-	
+	else {
+		NO* aux = topo;
+		cout << "O elemento a ser deletado é o: " << topo->valor << endl;
+		topo = topo->prox;
+		free(aux);
+	}
+
 
 }
 
